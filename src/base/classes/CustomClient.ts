@@ -16,7 +16,9 @@ export default class CustomClient extends Client implements ICustomClient {
                 GatewayIntentBits.MessageContent,
             ]
         });
-        this.config = require(`${process.cwd()}/data/config.json`)
+        this.config = {
+            token: ""
+        };
         this.handler = new Handler(this);
 
     }

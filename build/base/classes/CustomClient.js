@@ -14,7 +14,12 @@ class CustomClient extends discord_js_1.Client {
                 discord_js_1.GatewayIntentBits.MessageContent,
             ]
         });
-        this.config = require(`${process.cwd()}/data/config.json`);
+        // if (!process.env.DISCORD_TOKEN) {
+        //     throw new Error('DISCORD_TOKEN environment variable is not set');
+        // }
+        this.config = {
+            token: "MTM3NTc4MTk1MDk0NTc1NTE3Nw.GDRw56.VxmJ-fkPWwxA96G0pffSjR7cJyvCbZrNEeJiUs"
+        };
         this.handler = new Handler_1.default(this);
     }
     Init() {
