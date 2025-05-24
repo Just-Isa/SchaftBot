@@ -18,12 +18,17 @@ export default class CustomClient extends Client implements ICustomClient {
         });
         this.config = require(`${process.cwd()}/data/config.json`)
         this.handler = new Handler(this);
+        this.token = process.env.DISCORD_TOKEN ? process.env.DISCORD_TOKEN : '';
 
     }
     Init(): void {
-        this.LoadHandlers();
-        this.login(this.config.token)
-            .catch((e) => { console.log("Login Error: ", e) });
+        if (this.token) {
+            this.LoadHandlers();
+            this.login(this.config.token)
+                .catch((e) => { console.log("Login Error: ", e) });
+        } else {
+            throw new Error('DISCORD TOKEN MISSING')
+        }
     }
 
     LoadHandlers(): void {
