@@ -14,6 +14,9 @@ class CustomClient extends discord_js_1.Client {
                 discord_js_1.GatewayIntentBits.MessageContent,
             ]
         });
+        if (!process.env.DISCORD_TOKEN) {
+            throw new Error('DISCORD_TOKEN environment variable is not set');
+        }
         this.config = {
             token: process.env.DISCORD_TOKEN
         };
