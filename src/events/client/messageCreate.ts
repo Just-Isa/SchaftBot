@@ -16,6 +16,7 @@ export default class MessageCreate extends Event {
     async Execute(message: Message): Promise<void> {
         if (message.author.bot)
             return;
+
         if (message.mentions.has(this.client.user as ClientUser)) {
             this.handleUserSchaftWitchhunt(message);
             return;
