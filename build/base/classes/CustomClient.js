@@ -14,7 +14,9 @@ class CustomClient extends discord_js_1.Client {
                 discord_js_1.GatewayIntentBits.MessageContent,
             ]
         });
-        this.config = require(`${process.cwd()}/data/config.json`);
+        this.config = {
+            token: process.env.DISCORD_TOKEN
+        };
         this.handler = new Handler_1.default(this);
     }
     Init() {
