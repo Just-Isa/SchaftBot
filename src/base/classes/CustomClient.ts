@@ -16,6 +16,9 @@ export default class CustomClient extends Client implements ICustomClient {
                 GatewayIntentBits.MessageContent,
             ]
         });
+        if (!process.env.DISCORD_TOKEN) {
+            throw new Error('DISCORD_TOKEN environment variable is not set');
+        }
         this.config = {
             token: process.env.DISCORD_TOKEN
         };
