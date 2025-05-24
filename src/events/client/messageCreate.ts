@@ -14,7 +14,8 @@ export default class MessageCreate extends Event {
     }
 
     async Execute(message: Message): Promise<void> {
-        if (message.author.bot) return;
+        if (message.author.bot)
+            return;
         const matches: (keyof typeof regexes)[] = [];
         for (const [key, pattern] of Object.entries(regexes)) {
             const regex = new RegExp(pattern);
@@ -22,8 +23,9 @@ export default class MessageCreate extends Event {
                 matches.push(key as keyof typeof regexes);
             }
         }
+        if (matches.length === 0)
+            return;
+
         sendSchaftMessage(this.client, message, matches);
-        if (message)
-            console.log(message.content)
     }
 }
