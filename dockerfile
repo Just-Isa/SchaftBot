@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Build TypeScript to JavaScript
-RUN npm run build
+RUN npm run start
 
 # Expose any ports if needed (Discord bots usually don't need this)
 # EXPOSE 3000
